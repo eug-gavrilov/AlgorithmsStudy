@@ -4,8 +4,14 @@ import unittest
 
 class TestBalancedParentheses(unittest.TestCase):
 
-    def test_returns_false_when_unbalanced_mixed_group(self):
-        line = "[{)](}"
+    def test_returns_false_when_unbalanced_mixed_group_three_types(self):
+        line = "[{{)(}}]"
+        algorithm = balanced_parentheses.BalancedParentheses()
+        result = algorithm.answer(line)
+        self.assertEqual(False, result)
+
+    def test_returns_false_when_unbalanced_mixed_group_two_types(self):
+        line = "({)}"
         algorithm = balanced_parentheses.BalancedParentheses()
         result = algorithm.answer(line)
         self.assertEqual(False, result)
