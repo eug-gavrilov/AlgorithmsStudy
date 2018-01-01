@@ -16,7 +16,17 @@
 #
 # {()}[[{}]] is balanced
 
-
 class BalancedParentheses:
     def answer(self, line):
+        print(line)
+        count_a = 0
+        for x in line:
+            if x == "(":
+                count_a +=1
+            if x == ")":
+                count_a -=1
+                if count_a < 0:
+                    return False
+        if count_a == 0:
+            return True
         return False
