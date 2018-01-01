@@ -20,13 +20,41 @@ class BalancedParentheses:
     def answer(self, line):
         print(line)
         count_a = 0
+        count_b = 0
+        count_c = 0
+        last_symbol = ""
         for x in line:
             if x == "(":
                 count_a +=1
+                last_symbol = x
+            if x == "{":
+                count_b +=1
+                last_symbol = x
+            if x == "[":
+                count_c += 1
+                last_symbol = x
             if x == ")":
                 count_a -=1
                 if count_a < 0:
                     return False
+                if last_symbol != "(":
+                    return False
+            if x == "}":
+                count_b -= 1
+                if count_b < 0:
+                    return False
+                if last_symbol != "{":
+                    return False
+            if x == "]":
+                count_c -= 1
+                if count_c < 0:
+                    return False
+                if last_symbol != "[":
+                    return False
         if count_a == 0:
+            return True
+        if count_b == 0:
+            return True
+        if count_c == 0:
             return True
         return False
