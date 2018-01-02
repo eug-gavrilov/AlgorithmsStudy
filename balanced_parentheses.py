@@ -18,15 +18,29 @@
 
 class BalancedParentheses:
     def answer(self, line):
-        print(line)
-        count_a = 0
+        print("===== " +line)
+        opened = ""
         for x in line:
-            if x == "(":
-                count_a +=1
-            if x == ")":
-                count_a -=1
-                if count_a < 0:
+            if x == "(" or x == "[" or x == "{":
+               opened = opened + x
+            if x == ")" or x == "]" or x == "}":
+                if opened == "":
                     return False
-        if count_a == 0:
-            return True
-        return False
+                if x == ")":
+                    if opened[len(opened)-1] == "(":
+                        opened = opened[:len(opened)-1]
+                    else:
+                        return False
+                if x == "]":
+                    if opened[len(opened) - 1] == "[":
+                        opened = opened[:len(opened) - 1]
+                    else:
+                        return False
+                if x == "}":
+                    if opened[len(opened) - 1] == "{":
+                        opened = opened[:len(opened) - 1]
+                    else:
+                        return False
+        if opened != "":
+            return False
+        return True
