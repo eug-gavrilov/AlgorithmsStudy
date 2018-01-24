@@ -7,23 +7,19 @@ class TestWordSearcher(unittest.TestCase):
         test_case = ['incorrectline', 'line with thekeyword']
         searcher = word_searcher.WordSearcher()
         answer = searcher.search(test_case, ['keyword'])
-        self.assertEqual(test_case[0], answer[0])
+        self.assertEqual(['line with thekeyword'], answer)
 
     def test_returns_array_of_correct_lines_with_all_keywords(self):
         test_case = ['line with the keyword', 'incorrect line', 'searchword could be found here']
         searcher = word_searcher.WordSearcher()
         answer = searcher.search(test_case, ['keyword', 'searchword'])
-        self.assertEqual(2, len(answer))
-        self.assertEqual(test_case[0], answer[0])
-        self.assertEqual(test_case[2], answer[1])
+        self.assertEqual(['line with the keyword', 'searchword could be found here'], answer)
 
     def test_returns_array_of_correct_lines(self):
         test_case = ['line with the keyword', 'incorrect line', 'another keyword line']
         searcher = word_searcher.WordSearcher()
         answer = searcher.search(test_case, ['keyword'])
-        self.assertEqual(2, len(answer))
-        self.assertEqual(test_case[0], answer[0])
-        self.assertEqual(test_case[2], answer[1])
+        self.assertEqual(['line with the keyword', 'another keyword line'], answer)
 
     def test_returns_only_correct_line(self):
         test_case = ['line with the keyword', 'incorrect line']
@@ -35,7 +31,7 @@ class TestWordSearcher(unittest.TestCase):
         test_case = ['line with the keyword']
         searcher = word_searcher.WordSearcher()
         answer = searcher.search(test_case, ['keyword'])
-        self.assertEqual(test_case[0], answer[0])
+        self.assertEqual(['line with the keyword'], answer)
 
     def test_returns_nothing_if_nothing_matchs(self):
         test_case = ['asd', 'asdasd dsasdas', 'ewfdsfsdf']
