@@ -12,9 +12,9 @@
 class WordSearcher:
     def search(self, lines, words):
         answer = []
-        j = 0
         for word in words:
             for line in lines:
+                j = 0
                 for symbol in line:
                     if symbol != word[j]:
                         j = 0
