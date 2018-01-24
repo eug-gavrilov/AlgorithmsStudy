@@ -7,6 +7,20 @@
 # Words: ['keyword', 'searchword']
 # Result: ['line with the keyword', 'searchword could be found here']
 
+
+
 class WordSearcher:
     def search(self, lines, words):
-        return []
+        answer = []
+        j = 0
+        for word in words:
+            for line in lines:
+                for symbol in line:
+                    if symbol != word[j]:
+                        j = 0
+                    else:
+                        j = j +1
+                    if j == len(word):
+                        answer.append(line)
+                        break
+        return answer
